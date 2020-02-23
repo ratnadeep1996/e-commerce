@@ -1,0 +1,102 @@
+import React, { Component } from 'react';
+import { Card, Table, CardBody, Button } from 'reactstrap';
+import { connect } from 'react-redux';
+import { ADD_TO_CART } from '../reducers/cartListReducer';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+
+class Basket extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      productList: [],
+      cartList: [],
+      totalPrice: 0
+    }
+  }
+  componentDidMount() {
+    this.getCartList();
+  }
+
+  getCartList = () => {
+    fetch("http://localhost:8000/cartList").then(res => res.json())
+      .then(data => this.props.addToCart(data));
+  }
+
+  deleteProduct = (item) => {
+    const axios = require("axios");
+    axios.delete(`http://localhost:8000/cartList/${item.id}`, {
+    }).then(resp => {
+      NotificationManager.success('Product removed');
+      this.getCartList();
+    }).catch(error => {
+    });
+  }
+  buyNow = () => {
+
+  }
+  renderCartList = () => {
+    debugger
+    return this.props.cartList && this.props.cartList.length && this.props.cartList.map((item, index) => {
+      return (
+        <tr>
+          <td >{item.product && item.product.title}</td>
+          <td >{item.product && item.product.Quantity}</td>
+          <td >&#x20B9;{item.product && (item.product.Quantity * item.product.price).toLocaleString('en-IN')}</td>
+          <td>
+            <Button
+              id='trashButton'
+              className='lessPadding'
+              title='Delete Api Key'
+              color='danger'
+              onClick={() => this.deleteProduct(item)}
+            >
+              <i className='fa fa-trash' />
+            </Button>
+          </td>
+        </tr>
+      )
+    })
+  }
+  render() {
+    let total = 0;
+    this.props.cartList && this.props.cartList.length && this.props.cartList.forEach(element => {
+      total += element.product.Quantity * element.product.price;
+    });
+    return (
+      <div className="App">
+        <br />
+        <Card style={{ marginLeft: '20%', marginRight: '20%' }}>
+          <CardBody >
+            <Table>
+              <thead>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th></th>
+
+              </thead>
+              {this.props.cartList && this.props.cartList.length ?
+                <tbody>{this.renderCartList()} </tbody> : "No result Found"}
+            </Table>
+            {this.getTotal}
+            <button
+              onClick={this.buyNow()}
+              className="buyNowButton">
+              BUY NOW &nbsp;&#x20B9;{total.toLocaleString('en-IN')}
+            </button>
+          </CardBody>
+        </Card>
+        <NotificationContainer leaveTimeout={5000} />
+      </div>
+    )
+  }
+}
+const mapStateToProps = (state) => ({
+  cartList: state.cartList
+})
+const mapDispatchToProps = function (dispatch) {
+  return {
+    addToCart: (data) => dispatch({ type: ADD_TO_CART, data })
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Basket);

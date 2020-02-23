@@ -1,0 +1,132 @@
+{
+  "categories": [
+    {
+      "categoryId": 1,
+      "categoryName": "Mobiles"
+    },
+    {
+      "categoryId": 2,
+      "categoryName": "Sports"
+    },
+    {
+      "categoryId": 3,
+      "categoryName": "Books"
+    },
+    {
+      "categoryId": 4,
+      "categoryName": "Shoes"
+    }
+  ],
+  "products": [
+    {
+      "pId": 1,
+      "title": "OnePlus",
+      "description": "OnePlus 7 Pro (Nebula Blue, 8GB RAM, Fluid AMOLED Display, 256GB Storage, 4000mAH Battery)",
+      "price": 65999,
+      "rating": 4.1,
+      "categoryId": 1
+    },
+    {
+      "pId": 2,
+      "title": "Samsung",
+      "description": "Samsung Galaxy S10 (White, 8GB RAM, 512GB Storage)",
+      "price": 59000,
+      "rating": 3.8,
+      "categoryId": 1
+    },
+    {
+      "pId": 3,
+      "title": "Apple IPhone",
+      "description": "Apple iPhone 11 Pro Max (256GB) - Space Grey",
+      "price": 123900,
+      "rating": 4.3,
+      "categoryId": 1
+    },
+    {
+      "pId": 4,
+      "title": "Cricket Bat",
+      "description": "CEAT Hitman Full Size Double Blade Poplar Cricket Bat - Advance Play Poplar Willow Cricket Bat  (1.2 kg)",
+      "price": 360,
+      "rating": 3.1,
+      "categoryId": 2
+    },
+    {
+      "pId": 5,
+      "title": "Leather ball",
+      "description": "Adrenex 2 panel Red Cricket Leather ball (Pack of 1, Red)",
+      "price": 242,
+      "rating": 4.1,
+      "categoryId": 2
+    },
+    {
+      "pId": 6,
+      "title": "Racquet",
+      "description": "Yonex Carbonex 8000 Plus Multicolor Strung Badminton Racquet  (Pack of: 1, 85 g)",
+      "price": 1725,
+      "rating": 4,
+      "categoryId": 2
+    },
+    {
+      "pId": 7,
+      "title": "SSC JE Main",
+      "description": "SSC JE Main Exam Staff Selection Commission Civil Engineering Paper - II 2019 - 20 - Year - Wise Conventional Solved Papers and Detailed Solutions With 2 Practice Sets 2007 - 2017 Second Edition  (English, Paperback, GKP)",
+      "price": 360,
+      "rating": 4.2,
+      "categoryId": 3
+    },
+    {
+      "pId": 8,
+      "title": "Upon a Burning Throne",
+      "description": "Upon a Burning Throne - The Burnt Empire Saga  (English, Paperback, Banker Ashok)",
+      "price": 303,
+      "rating": 4.4,
+      "categoryId": 3
+    },
+    {
+      "pId": 9,
+      "title": "The Power of Your Subconscious Mind",
+      "description": "The Power of Your Subconscious Mind - Unlock Your Master Key to Success  (English, Paperback, Dr. Murphy Joseph)",
+      "price": 99,
+      "rating": 4.6,
+      "categoryId": 3
+    }
+  ],
+  "cartList": [
+    {
+      "product": {
+        "pId": 1,
+        "title": "OnePlus",
+        "description": "OnePlus 7 Pro (Nebula Blue, 8GB RAM, Fluid AMOLED Display, 256GB Storage, 4000mAH Battery)",
+        "price": 65999,
+        "rating": 4.1,
+        "categoryId": 1,
+        "Quantity": 2
+      },
+      "id": 1
+    },
+    {
+      "product": {
+        "pId": 7,
+        "title": "SSC JE Main",
+        "description": "SSC JE Main Exam Staff Selection Commission Civil Engineering Paper - II 2019 - 20 - Year - Wise Conventional Solved Papers and Detailed Solutions With 2 Practice Sets 2007 - 2017 Second Edition  (English, Paperback, GKP)",
+        "price": 360,
+        "rating": 4.2,
+        "categoryId": 3,
+        "Quantity": 1
+      },
+      "id": 3
+    },
+    {
+      "product": {
+        "pId": 3,
+        "title": "Apple IPhone",
+        "description": "Apple iPhone 11 Pro Max (256GB) - Space Grey",
+        "price": 123900,
+        "rating": 4.3,
+        "categoryId": 1,
+        "Quantity": 1
+      },
+      "id": 5
+    }
+  ]
+}

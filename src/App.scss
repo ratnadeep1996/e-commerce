@@ -1,0 +1,35 @@
+body {
+  background-color: lightblue !important;
+}
+.textwrap {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.rating {
+  padding: 6px 12px;
+  color: white;
+  border-radius: 14px;
+  width: 60px;
+  font-size: 16px;
+  background-color: #26a541;
+  vertical-align: baseline;
+}
+.cartButton {
+  padding: 18px 8px;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  min-width: 20%;
+  border: none;
+  float: left;
+  background: #ff9f00;
+  color: #fff;
+}
+.buyNowButton {
+  background: #fb641b;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  border: none;
+  min-height: 40px;
+  margin-left: 70%;
+  color: #fff;
+}
