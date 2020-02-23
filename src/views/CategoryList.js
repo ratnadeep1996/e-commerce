@@ -29,8 +29,8 @@ class CategoryList extends Component {
 							<Col >
 								<img src={`/categories/categoryId${item.categoryId}.jpg`} alt={item.categoryName}
 									width="100px" height="150px" style={{ maxHeight: "150px", maxWidth: "100px" }} />
-								<CardFooter >
-									{item.categoryName}
+								<CardFooter style={{fontWeight:"600"}} >
+								{item.categoryName}
 								</CardFooter>
 							</Col>
 						</Link>
@@ -41,7 +41,7 @@ class CategoryList extends Component {
 	}
 	render() {
 		return (
-			<div >
+			<div className="hscroll">
 				<h2 style={{ textAlign: "center" }}>Select Your Category</h2>
 				<br />
 				<Row>

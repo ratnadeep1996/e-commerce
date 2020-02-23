@@ -26,11 +26,12 @@ class Basket extends Component {
     const axios = require("axios");
     axios.delete(`http://localhost:8000/cartList/${item.id}`, {
     }).then(resp => {
-      NotificationManager.success('Product removed');
+      NotificationManager.error('Product removed');
       this.getCartList();
     }).catch(error => {
     });
   }
+
   buyNow = () => {
 
   }
@@ -40,7 +41,7 @@ class Basket extends Component {
       return (
         <tr>
           <td >{item.product && item.product.title}</td>
-          <td >{item.product && item.product.Quantity}</td>
+          <td ><span style={{fontSize:"12px"}}>&#10005;</span>&nbsp;{item.product && item.product.Quantity}</td>
           <td >&#x20B9;{item.product && (item.product.Quantity * item.product.price).toLocaleString('en-IN')}</td>
           <td>
             <Button
@@ -78,15 +79,15 @@ class Basket extends Component {
               {this.props.cartList && this.props.cartList.length ?
                 <tbody>{this.renderCartList()} </tbody> : "No result Found"}
             </Table>
-            {this.getTotal}
+             {this.props.cartList && this.props.cartList.length ?
             <button
               onClick={this.buyNow()}
               className="buyNowButton">
               BUY NOW &nbsp;&#x20B9;{total.toLocaleString('en-IN')}
-            </button>
+            </button>:null}
           </CardBody>
         </Card>
-        <NotificationContainer leaveTimeout={5000} />
+        <NotificationContainer />
       </div>
     )
   }

@@ -1,5 +1,8 @@
 body {
-  background-color: lightblue !important;
+  background-image: url('/categories/background.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size:cover;
 }
 .textwrap {
   overflow: hidden;
@@ -32,4 +35,7 @@ body {
   min-height: 40px;
   margin-left: 70%;
   color: #fff;
+}
+.hscroll{
+  overflow-x: hidden;
 }

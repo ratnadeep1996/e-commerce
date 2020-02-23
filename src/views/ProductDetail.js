@@ -17,8 +17,9 @@ class ProductDetail extends Component {
 			}))
 	}
 
-	addToCart = (product) => {
+	addToCart = (e,product) => {
 		debugger
+		e.preventDefault();	
 		let flag = 0;
 		const axios = require('axios');
 		this.state.cartList && this.state.cartList.forEach(element => {
@@ -29,7 +30,7 @@ class ProductDetail extends Component {
 				axios.put(`http://localhost:8000/cartList/${element.id}`, {
 					product
 				}).then(resp => {
-					NotificationManager.success('Product added',"title",5000);
+					NotificationManager.success('Product added');
 				}).catch(error => {
 				});
 			}
@@ -49,14 +50,14 @@ class ProductDetail extends Component {
 		let product = this.props.product;
 		return (
 			<Row>
-				<Card style={{ margin: "50px" }}>
+				<Card style={{ marginLeft: "50px" }}>
 					<CardTitle title={product.title} className="textwrap" style={{ fontSize: "18px" }}><b>{product.title}</b></CardTitle>
 					<Col xs lg="6">
 						<img src={`/products/pId${product.pId}.jpg`} alt={product.title}
-							width="250px" height="350px" style={{ maxHeight: "350px", maxWidth: "250px" }} />
+							width="250px" height="600px" style={{ maxHeight: "400px", maxWidth: "250px" }} />
 					</Col>
 				</Card>
-				<Col xs  >
+				<Col xs style={{marginLeft:"10'0px"}}>
 					<h5 style={{ fontWeight: "500" }}>{product.description}</h5>
 					<h2><b>&#x20B9;{(product.price).toLocaleString('en-IN')}</b></h2>
 					<h2 className="rating">{product.rating}&nbsp;&#9734;</h2>
@@ -70,7 +71,7 @@ class ProductDetail extends Component {
 					<br />
 					<button
 						className="cartButton"
-						onClick={() => this.addToCart(product)}
+						onClick={(e) => this.addToCart(e,product)}
 					>
 						<i style={{ fontSize: "24px" }} className="fa">&#xf07a;</i>&nbsp;
 							ADD TO CART
@@ -85,7 +86,7 @@ class ProductDetail extends Component {
 				<Row>
 					{this.renderProductDetail()}
 				</Row>
-				<NotificationContainer leaveTimeout={5000} />
+				<NotificationContainer  />
 			</div>
 		)
 	}

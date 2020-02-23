@@ -155,14 +155,14 @@ class ProductList extends Component {
 			}
 		});
 		if (this.isListEmpty(productList)) {
-			return <p>No result found</p>
+			return <p style={{color:"white"}}>No result found</p>
 		}
 		if (this.state.sortBy)
 			this.handleSort(productList);
 		if (this.state.priceRange)
 			productList = this.priceRangeFilter(productList);
 		if (this.isListEmpty(productList)) {
-			return <p>No result found</p>
+			return <p style={{color:"white"}}>No result found</p>
 		}
 
 		return productList.map((item, index) => {
@@ -188,7 +188,6 @@ class ProductList extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<h2>Products</h2>
 				<Row style={{ margin: "2%" }}>
 					<Col md={2}>
 						<Input
@@ -227,7 +226,7 @@ class ProductList extends Component {
 						</Input>
 					</Col>
 				</Row>
-				<Row style={{ margin: "2%" }}>
+				<Row style={{ margin: "3%" }}>
 					{this.renderProductList()}
 				</Row>
 				<Modal
