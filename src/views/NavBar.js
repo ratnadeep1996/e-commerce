@@ -34,14 +34,14 @@ class NavBar extends Component {
               style={{ maxHeight: "50px", maxWidth: "100%" }} />
           </NavbarBrand>
           <h3>An E-Commerce Site</h3>
-          <Link to="/cart">
-            <div style={style}>
-              <i style={{ fontSize: "34px" }} className="fa">&#xf07a;</i>
-              <Badge color='danger' style={{ marginBottom: "35px" }}>{this.props.cartList.length}</Badge>
-            </div>
-          </Link>
+
+          <div style={style}>
+            <Link to="/cart"><i style={{ fontSize: "34px" }} className="fa">&#xf07a;</i>
+            </Link>
+            <Badge color='danger' style={{ marginBottom: "35px" }}>{this.props.cartList.length}</Badge>
+          </div>
         </Navbar>
-      </div>
+      </div >
     );
   }
 }
@@ -53,4 +53,4 @@ const mapDispatchToProps = function (dispatch) {
     addToCart: (data) => dispatch({ type: ADD_TO_CART, data })
   }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(NavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

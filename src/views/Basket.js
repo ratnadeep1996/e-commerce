@@ -47,7 +47,7 @@ class Basket extends Component {
             <Button
               id='trashButton'
               className='lessPadding'
-              title='Delete Api Key'
+              title='Delete Product'
               color='danger'
               onClick={() => this.deleteProduct(item)}
             >

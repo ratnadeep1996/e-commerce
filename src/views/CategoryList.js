@@ -42,7 +42,7 @@ class CategoryList extends Component {
 	render() {
 		return (
 			<div className="hscroll">
-				<h2 style={{ textAlign: "center" }}>Select Your Category</h2>
+				<h2 style={{ textAlign: "center",color:"white" }}>Select Your Category</h2>
 				<br />
 				<Row>
 					{this.renderCategoryList()}
