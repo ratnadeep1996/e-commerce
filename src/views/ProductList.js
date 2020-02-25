@@ -155,14 +155,14 @@ class ProductList extends Component {
 			}
 		});
 		if (this.isListEmpty(productList)) {
-			return <p style={{color:"white"}}>No result found</p>
+			return <p style={{ color: "white" }}>No result found</p>
 		}
 		if (this.state.sortBy)
 			this.handleSort(productList);
 		if (this.state.priceRange)
 			productList = this.priceRangeFilter(productList);
 		if (this.isListEmpty(productList)) {
-			return <p style={{color:"white"}}>No result found</p>
+			return <p style={{ color: "white" }}>No result found</p>
 		}
 
 		return productList.map((item, index) => {
@@ -174,7 +174,9 @@ class ProductList extends Component {
 							<img src={`/products/pId${item.pId}.jpg`} alt={item.title}
 								width="100px" height="150px" style={{ maxHeight: "150px", maxWidth: "100px" }} />
 							<br />
-							<p><b>&#x20B9;{(item.price).toLocaleString('en-IN')}</b></p>
+							<p><b>&#x20B9;{(item.price).toLocaleString('en-IN')}&nbsp;</b>
+								<p className="prodListRating">{item.rating}&nbsp;&#9734;</p>
+							</p>
 							<Button
 								style={{ backgroundColor: 'transparent', color: 'black' }}
 								onClick={() => this.productDetail(item)}
@@ -232,16 +234,17 @@ class ProductList extends Component {
 				<Modal
 					isOpen={this.state.showModal}
 					effect='fadeInDown'
+					toggle={this.closeModal}
 					size={'xl'}
 					fade={true}
 					id='transaction-tabs-modal'
 				>
 					<Row>
 						<Col style={{ textAlign: 'right' }}>
-							<Button
+							<Button close
 								id='closeModal'
+								style={{marginRight:"10px"}}
 								onClick={this.closeModal}>
-								Close
 							</Button>
 						</Col>
 					</Row>

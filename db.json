@@ -119,7 +119,7 @@
       "title": "Racquet",
       "description": "Yonex Carbonex 8000 Plus Multicolor Strung Badminton Racquet  (Pack of: 1, 85 g)",
       "price": 1725,
-      "rating": 4,
+      "rating": 4.0,
       "categoryId": 2
     },
     {
@@ -179,66 +179,5 @@
       "categoryId": 3
     }
   ],
-  "cartList": [
-    {
-      "product": {
-        "pId": 1,
-        "title": "OnePlus 7 Pro",
-        "description": "OnePlus 7 Pro (Nebula Blue, 8GB RAM, Fluid AMOLED Display, 256GB Storage, 4000mAH Battery)",
-        "price": 65999,
-        "rating": 4.1,
-        "categoryId": 1,
-        "Quantity": 2
-      },
-      "id": 2
-    },
-    {
-      "product": {
-        "pId": 20,
-        "title": "Srimad Bhagavad Gita",
-        "description": "Srimad Bhagavad Gita As It Is : HINDI-2016- New Edition (Hardcover, Hindi, A. C. Bhaktivedanta Swami Prabhupada,ISKCON)  (HARD BOUND, Hindi, His Divine Grace A. C. Bhaktivedanta Swami Prabhupada)",
-        "price": 170,
-        "rating": 4.7,
-        "categoryId": 3,
-        "Quantity": 1
-      },
-      "id": 3
-    },
-    {
-      "product": {
-        "pId": 10,
-        "title": "Realme 5i",
-        "description": "Realme 5i (Forest Green, 64 GB)  (4 GB RAM)",
-        "price": 8999,
-        "rating": 4.4,
-        "categoryId": 1,
-        "Quantity": 1
-      },
-      "id": 4
-    },
-    {
-      "product": {
-        "pId": 18,
-        "title": "Life's Amazing Secrets",
-        "description": "Life's Amazing Secrets  (English, Paperback, Das Gaur Gopal)",
-        "price": 146,
-        "rating": 4.6,
-        "categoryId": 3,
-        "Quantity": 1
-      },
-      "id": 5
-    },
-    {
-      "product": {
-        "pId": 17,
-        "title": "Because Life is a Gift",
-        "description": "Because Life is a Gift - Stories of Hope, Courage and Perseverance - Stories of Hope, Courage and Perseverance  (English, Paperback, Chabbra MS Disha)",
-        "price": 97,
-        "rating": 4.3,
-        "categoryId": 3,
-        "Quantity": 2
-      },
-      "id": 6
-    }
-  ]
+  "cartList": []
 }

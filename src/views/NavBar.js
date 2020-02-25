@@ -30,7 +30,7 @@ class NavBar extends Component {
       <div>
         <Navbar color="light" light expand="md">
           <NavbarBrand href="/">
-            <img src={`/categories/logo.jpg`} alt="logo"
+            <img src={`/branding/logo.jpg`} alt="logo"
               style={{ maxHeight: "50px", maxWidth: "100%" }} />
           </NavbarBrand>
           <h3>An E-Commerce Site</h3>

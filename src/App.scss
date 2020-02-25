@@ -1,8 +1,8 @@
 body {
-  background-image: url('/categories/background.jpg');
+  background-image: url('/branding/background.jpg');
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
 }
 .textwrap {
   overflow: hidden;
@@ -15,6 +15,15 @@ body {
   border-radius: 14px;
   width: 60px;
   font-size: 16px;
+  background-color: #26a541;
+  vertical-align: baseline;
+}
+.prodListRating {
+  padding: 4px 6px;
+  color: white;
+  border-radius: 14px;
+  display: unset;
+  font-size: 10px;
   background-color: #26a541;
   vertical-align: baseline;
 }
@@ -36,6 +45,6 @@ body {
   margin-left: 70%;
   color: #fff;
 }
-.hscroll{
+.hscroll {
   overflow-x: hidden;
 }

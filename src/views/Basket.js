@@ -10,11 +10,20 @@ class Basket extends Component {
     this.state = {
       productList: [],
       cartList: [],
+      categoryList: [],
       totalPrice: 0
     }
   }
   componentDidMount() {
     this.getCartList();
+    this.getCategories();
+  }
+
+  getCategories = () => {
+    fetch("http://localhost:8000/categories").then(res => res.json())
+      .then(data => this.setState({
+        categoryList: data
+      }))
   }
 
   getCartList = () => {
@@ -32,8 +41,39 @@ class Basket extends Component {
     });
   }
 
+  getCategoryName = (categoryId) => {
+    debugger
+    let categoryName = '';
+    this.state.categoryList && this.state.categoryList.forEach(element => {
+      if (element.categoryId === categoryId) {
+        return categoryName = element.categoryName;
+      }
+    });
+    return categoryName;
+  }
   buyNow = () => {
 
+  }
+  renderEmptyCart() {
+    return (
+      <tr>
+        <td colSpan="5">
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <img src={`/branding/empty-cart.jpg`} alt="empty-cart"
+              style={{ maxHeight: "200px", maxWidth: "200px" }} />
+          </div>
+          <br />
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Button
+              onClick={() => this.props.history.push("/")}
+              color="success"
+            >
+              Shop Now
+        </Button>
+          </div>
+        </td>
+      </tr>
+    )
   }
   renderCartList = () => {
     debugger
@@ -41,7 +81,8 @@ class Basket extends Component {
       return (
         <tr>
           <td >{item.product && item.product.title}</td>
-          <td ><span style={{fontSize:"12px"}}>&#10005;</span>&nbsp;{item.product && item.product.Quantity}</td>
+          <td>{this.getCategoryName(item.product.categoryId)}</td>
+          <td ><span style={{ fontSize: "12px" }}>&#10005;</span>&nbsp;{item.product && item.product.Quantity}</td>
           <td >&#x20B9;{item.product && (item.product.Quantity * item.product.price).toLocaleString('en-IN')}</td>
           <td>
             <Button
@@ -71,20 +112,21 @@ class Basket extends Component {
             <Table>
               <thead>
                 <th>Product Name</th>
+                <th>Category</th>
                 <th>Quantity</th>
                 <th>Price</th>
                 <th></th>
 
               </thead>
               {this.props.cartList && this.props.cartList.length ?
-                <tbody>{this.renderCartList()} </tbody> : "No result Found"}
+                <tbody>{this.renderCartList()} </tbody> : <tbody>{this.renderEmptyCart()}</tbody>}
             </Table>
-             {this.props.cartList && this.props.cartList.length ?
-            <button
-              onClick={this.buyNow()}
-              className="buyNowButton">
-              BUY NOW &nbsp;&#x20B9;{total.toLocaleString('en-IN')}
-            </button>:null}
+            {this.props.cartList && this.props.cartList.length ?
+              <button
+                onClick={this.buyNow()}
+                className="buyNowButton">
+                BUY NOW &nbsp;&#x20B9;{total.toLocaleString('en-IN')}
+              </button> : null}
           </CardBody>
         </Card>
         <NotificationContainer />
