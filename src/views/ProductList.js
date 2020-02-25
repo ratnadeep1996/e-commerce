@@ -4,7 +4,7 @@ import ProductDetail from './ProductDetail';
 
 const SORT_BY = 'sortBy';
 const PRICE_RANGE = 'priceRange';
-const SEARCH_TEXT = "searchText";
+const SEARCH_TEXT = 'searchText';
 
 class ProductList extends Component {
 	constructor(props) {
@@ -28,14 +28,13 @@ class ProductList extends Component {
 	}
 
 	getProductList = () => {
-		fetch("http://localhost:8000/products").then(res => res.json())
+		fetch('http://localhost:8000/products').then(res => res.json())
 			.then(data => this.setState({
 				productList: data
 			}))
 	}
 
 	onChange = (event) => {
-		debugger
 		let key = event.target.name;
 		let value = event.target.value;
 		if (key === SEARCH_TEXT) {
@@ -49,24 +48,24 @@ class ProductList extends Component {
 		else if (key === SORT_BY)
 			this.setState({
 				[key]: parseInt(value)
-			}, () => this.renderProductList())
+			}, () => this.renderProductList());
 		else if (key === PRICE_RANGE) {
 			this.setState({
 				[key]: parseInt(value)
-			}, () => this.renderProductList())
+			}, () => this.renderProductList());
 		}
 	}
 
 	renderOptionSortBy = () => {
-		const options = [{ id: 1, name: "Price-Low to High" }, { id: 2, name: "Price-High to Low" }]
+		const options = [{ id: 1, name: 'Price-Low to High' }, { id: 2, name: 'Price-High to Low' }]
 		return options.map((item, index) => {
 			return <option key={item.index} value={item.id}>{item.name}</option>
 		})
 	}
 
 	renderPriceRange = () => {
-		const options = [{ id: 1, name: "0-1000" }, { id: 2, name: "1000-5000" }, { id: 3, name: "5000-20000" },
-		{ id: 4, name: "Above 20000" }]
+		const options = [{ id: 1, name: '0-1000' }, { id: 2, name: '1000-5000' }, { id: 3, name: '5000-20000' },
+		{ id: 4, name: 'Above 20000' }]
 		return options.map((item, index) => {
 			return <option key={item.index} value={item.id}>{item.name}</option>
 		})
@@ -129,7 +128,6 @@ class ProductList extends Component {
 	}
 
 	isListEmpty(productList) {
-		debugger
 		if (!productList.length)
 			return true;
 	}
@@ -154,28 +152,32 @@ class ProductList extends Component {
 				productList.push(element);
 			}
 		});
-		if (this.isListEmpty(productList)) {
-			return <p style={{ color: "white" }}>No result found</p>
+		if (this.state.productList && this.state.productList.length) {
+			if (this.isListEmpty(productList)) {
+				return <p style={{ color: 'white' }}>No result found</p>
+			}
 		}
 		if (this.state.sortBy)
 			this.handleSort(productList);
 		if (this.state.priceRange)
 			productList = this.priceRangeFilter(productList);
-		if (this.isListEmpty(productList)) {
-			return <p style={{ color: "white" }}>No result found</p>
+		if (this.state.productList && this.state.productList.length) {
+			if (this.isListEmpty(productList)) {
+				return <p style={{ color: 'white' }}>No result found</p>
+			}
 		}
 
 		return productList.map((item, index) => {
 			return (
-				<Card body className="text-center" style={{ maxWidth: "250px", maxHeight: "320px" }}>
-					<CardTitle title={item.title} className="textwrap" style={{ fontSize: "18px" }}><b>{item.title}</b></CardTitle>
+				<Card body className='text-center' style={{ maxWidth: '250px', maxHeight: '320px' }}>
+					<CardTitle title={item.title} className='textwrap' style={{ fontSize: '18px' }}><b>{item.title}</b></CardTitle>
 					<CardBody  >
 						<Col >
-							<img src={`/products/pId${item.pId}.jpg`} alt={item.title}
-								width="100px" height="150px" style={{ maxHeight: "150px", maxWidth: "100px" }} />
+							<img src={`/images/products/pId${item.pId}.jpg`} alt={item.title}
+								width='100px' height='150px' style={{ maxHeight: '150px', maxWidth: '100px' }} />
 							<br />
 							<p><b>&#x20B9;{(item.price).toLocaleString('en-IN')}&nbsp;</b>
-								<p className="prodListRating">{item.rating}&nbsp;&#9734;</p>
+								<p className='prodListRating'>{item.rating}&nbsp;&#9734;</p>
 							</p>
 							<Button
 								style={{ backgroundColor: 'transparent', color: 'black' }}
@@ -190,12 +192,12 @@ class ProductList extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Row style={{ margin: "2%" }}>
+				<Row style={{ margin: '2%' }}>
 					<Col md={2}>
 						<Input
-							type="select"
-							id="sort"
-							name="sortBy"
+							type='select'
+							id='sort'
+							name='sortBy'
 							value={this.state.sortBy}
 							onChange={(e) => this.onChange(e)}
 						>
@@ -205,9 +207,9 @@ class ProductList extends Component {
 					</Col>
 					<Col md={2}>
 						<Input
-							type="select"
-							id="priceRange"
-							name="priceRange"
+							type='select'
+							id='priceRange'
+							name='priceRange'
 							value={this.state.priceRange}
 							onChange={(e) => this.onChange(e)}
 						>
@@ -217,9 +219,9 @@ class ProductList extends Component {
 					</Col>
 					<Col md={2}>
 						<Input
-							type="text"
-							id="search"
-							name="searchText"
+							type='text'
+							id='search'
+							name='searchText'
 							value={this.state.searchText}
 							placeholder='search'
 							onChange={(e) => this.onChange(e)}
@@ -228,7 +230,7 @@ class ProductList extends Component {
 						</Input>
 					</Col>
 				</Row>
-				<Row style={{ margin: "3%" }}>
+				<Row style={{ margin: '3%' }}>
 					{this.renderProductList()}
 				</Row>
 				<Modal
@@ -243,7 +245,7 @@ class ProductList extends Component {
 						<Col style={{ textAlign: 'right' }}>
 							<Button close
 								id='closeModal'
-								style={{marginRight:"10px"}}
+								style={{ marginRight: '10px' }}
 								onClick={this.closeModal}>
 							</Button>
 						</Col>

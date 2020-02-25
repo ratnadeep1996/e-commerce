@@ -17,13 +17,11 @@ class ProductDetail extends Component {
   }
 
   getCartList = () => {
-    fetch("http://localhost:8000/cartList").then(res => res.json())
-    .then(data => this.props.addToCart(data));
+    fetch('http://localhost:8000/cartList').then(res => res.json())
+      .then(data => this.props.addToCart(data));
   }
 
-  addToCart = (e, product) => {
-    debugger
-    e.preventDefault();
+  addToCart = (product) => {
     let flag = 0;
     const axios = require('axios');
     this.props.cartList && this.props.cartList.forEach(element => {
@@ -56,31 +54,32 @@ class ProductDetail extends Component {
     let product = this.props.product;
     return (
       <Row>
-        <Card style={{ marginLeft: "50px" }}>
-          <CardTitle title={product.title} className="textwrap" style={{ fontSize: "18px" }}><b>{product.title}</b></CardTitle>
-          <Col xs lg="6">
-            <img src={`/products/pId${product.pId}.jpg`} alt={product.title}
-              width="250px" height="600px" style={{ maxHeight: "400px", maxWidth: "250px" }} />
+        <Card style={{ marginLeft: '50px' }}>
+          <CardTitle title={product.title} className='textwrap' style={{ fontSize: '18px' }}><b>{product.title}</b></CardTitle>
+          <Col xs lg='6'>
+            <img src={`/images/products/pId${product.pId}.jpg`} alt={product.title}
+              width='250px' height='600px' style={{ maxHeight: '400px', maxWidth: '250px' }} />
           </Col>
         </Card>
-        <Col xs style={{ marginLeft: "10'0px" }}>
-          <h5 style={{ fontWeight: "500" }}>{product.description}</h5>
+        <Col xs style={{ marginLeft: '10px' }}>
+          <h5 style={{ fontWeight: '500' }}>{product.description}</h5>
           <h2><b>&#x20B9;{(product.price).toLocaleString('en-IN')}</b></h2>
-          <h2 className="rating">{product.rating}&nbsp;&#9734;</h2>
+          <h2 className='rating'>{product.rating}&nbsp;&#9734;</h2>
           <h5>Available offers</h5>
-          <p style={{ fontWeight: "600" }}>	<img src={`/products/tag.jpg`} alt="tag"
-            width="20px" height="20px" /> <b>Bank Offer</b> 5% Unlimited Cashback on Flipkart Axis Bank Credit Card</p>
-          <p style={{ fontWeight: "600" }}>	<img src={`/products/tag.jpg`} alt="tag"
-            width="20px" height="20px" /> <b>Bank Offer</b> Extra 5% off* with Axis Bank Buzz Credit Card</p>
-          <p style={{ fontWeight: "600" }}>	<img src={`/products/tag.jpg`} alt="tag"
-            width="20px" height="20px" /> <b>Special Price</b> Get extra 20% off (price inclusive of discount)</p>
+          <p style={{ fontWeight: '600' }}>	<img src={`/images/products/tag.jpg`} alt='tag'
+            width='20px' height='20px' /> <b>Bank Offer</b> 5% Unlimited Cashback on Flipkart Axis Bank Credit Card</p>
+          <p style={{ fontWeight: '600' }}>	<img src={`/images/products/tag.jpg`} alt='tag'
+            width='20px' height='20px' /> <b>Bank Offer</b> Extra 5% off* with Axis Bank Buzz Credit Card</p>
+          <p style={{ fontWeight: '600' }}>	<img src={`/images/products/tag.jpg`} alt='tag'
+            width='20px' height='20px' /> <b>Special Price</b> Get extra 20% off (price inclusive of discount)</p>
           <br />
           <button
-            className="cartButton"
-            title="Add to cart"
-            onClick={(e) => this.addToCart(e, product)}
+            className='cartButton'
+            title='Add to cart'
+            id='cartButton'
+            onClick={() => this.addToCart(product)}
           >
-            <i style={{ fontSize: "24px" }} className="fa">&#xf07a;</i>&nbsp;
+            <i style={{ fontSize: '24px' }} className='fa'>&#xf07a;</i>&nbsp;
 							ADD TO CART
 						</button>
         </Col>
@@ -89,9 +88,9 @@ class ProductDetail extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <Row>
-          {this.renderProductDetail()}
+          {this.props.product ? this.renderProductDetail() : 'Details not found'}
         </Row>
         <NotificationContainer />
       </div>

@@ -7,27 +7,18 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 import Navbar from './views/NavBar';
 
 class App extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-		}
-	}
-
-
 	render() {
 		return (
 			<div>
 				<HashRouter>
-				<Navbar />
+					<Navbar />
 					<Switch>
-						<Route path="/" exact={true} component={CategoryList} />
-						<Route path="/category/:id" exact={true} component={ProductList} />
-						<Route path="/cart" exact={true} component={Basket} />
+						<Route path='/' exact={true} component={CategoryList} />
+						<Route path='/category/:id' exact={true} component={ProductList} />
+						<Route path='/cart' exact={true} component={Basket} />
 					</Switch>
 				</HashRouter>
-				
 			</div>
-
 		);
 	}
 }

@@ -20,19 +20,19 @@ class Basket extends Component {
   }
 
   getCategories = () => {
-    fetch("http://localhost:8000/categories").then(res => res.json())
+    fetch('http://localhost:8000/categories').then(res => res.json())
       .then(data => this.setState({
         categoryList: data
       }))
   }
 
   getCartList = () => {
-    fetch("http://localhost:8000/cartList").then(res => res.json())
+    fetch('http://localhost:8000/cartList').then(res => res.json())
       .then(data => this.props.addToCart(data));
   }
 
   deleteProduct = (item) => {
-    const axios = require("axios");
+    const axios = require('axios');
     axios.delete(`http://localhost:8000/cartList/${item.id}`, {
     }).then(resp => {
       NotificationManager.error('Product removed');
@@ -42,7 +42,6 @@ class Basket extends Component {
   }
 
   getCategoryName = (categoryId) => {
-    debugger
     let categoryName = '';
     this.state.categoryList && this.state.categoryList.forEach(element => {
       if (element.categoryId === categoryId) {
@@ -52,21 +51,29 @@ class Basket extends Component {
     return categoryName;
   }
   buyNow = () => {
-
+    this.props.cartList && this.props.cartList.length && this.props.cartList.forEach(element => {
+      const axios = require('axios');
+      axios.delete(`http://localhost:8000/cartList/${element.id}`, {
+      }).then(resp => {
+        this.getCartList();
+      }).catch(error => {
+      });
+    });
+    NotificationManager.success('Your order is Placed');
   }
   renderEmptyCart() {
     return (
       <tr>
-        <td colSpan="5">
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <img src={`/branding/empty-cart.jpg`} alt="empty-cart"
-              style={{ maxHeight: "200px", maxWidth: "200px" }} />
+        <td colSpan='5'>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <img src={`/images/branding/empty-cart.jpg`} alt='empty-cart'
+              style={{ maxHeight: '200px', maxWidth: '200px' }} />
           </div>
           <br />
-          <div style={{ display: "flex", justifyContent: "center" }}>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
             <Button
-              onClick={() => this.props.history.push("/")}
-              color="success"
+              onClick={() => this.props.history.push('/')}
+              color='success'
             >
               Shop Now
         </Button>
@@ -76,13 +83,12 @@ class Basket extends Component {
     )
   }
   renderCartList = () => {
-    debugger
     return this.props.cartList && this.props.cartList.length && this.props.cartList.map((item, index) => {
       return (
         <tr>
           <td >{item.product && item.product.title}</td>
           <td>{this.getCategoryName(item.product.categoryId)}</td>
-          <td ><span style={{ fontSize: "12px" }}>&#10005;</span>&nbsp;{item.product && item.product.Quantity}</td>
+          <td ><span style={{ fontSize: '12px' }}>&#10005;</span>&nbsp;{item.product && item.product.Quantity}</td>
           <td >&#x20B9;{item.product && (item.product.Quantity * item.product.price).toLocaleString('en-IN')}</td>
           <td>
             <Button
@@ -105,7 +111,7 @@ class Basket extends Component {
       total += element.product.Quantity * element.product.price;
     });
     return (
-      <div className="App">
+      <div className='App'>
         <br />
         <Card style={{ marginLeft: '20%', marginRight: '20%' }}>
           <CardBody >
@@ -116,15 +122,14 @@ class Basket extends Component {
                 <th>Quantity</th>
                 <th>Price</th>
                 <th></th>
-
               </thead>
               {this.props.cartList && this.props.cartList.length ?
                 <tbody>{this.renderCartList()} </tbody> : <tbody>{this.renderEmptyCart()}</tbody>}
             </Table>
             {this.props.cartList && this.props.cartList.length ?
               <button
-                onClick={this.buyNow()}
-                className="buyNowButton">
+                onClick={() => this.buyNow()}
+                className='buyNowButton'>
                 BUY NOW &nbsp;&#x20B9;{total.toLocaleString('en-IN')}
               </button> : null}
           </CardBody>

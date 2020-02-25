@@ -119,7 +119,7 @@
       "title": "Racquet",
       "description": "Yonex Carbonex 8000 Plus Multicolor Strung Badminton Racquet  (Pack of: 1, 85 g)",
       "price": 1725,
-      "rating": 4.0,
+      "rating": 4,
       "categoryId": 2
     },
     {
@@ -179,5 +179,30 @@
       "categoryId": 3
     }
   ],
-  "cartList": []
+  "cartList": [
+    {
+      "product": {
+        "pId": 8,
+        "title": "Upon a Burning Throne",
+        "description": "Upon a Burning Throne - The Burnt Empire Saga  (English, Paperback, Banker Ashok)",
+        "price": 303,
+        "rating": 4.4,
+        "categoryId": 3,
+        "Quantity": 2
+      },
+      "id": 1
+    },
+    {
+      "product": {
+        "pId": 1,
+        "title": "OnePlus 7 Pro",
+        "description": "OnePlus 7 Pro (Nebula Blue, 8GB RAM, Fluid AMOLED Display, 256GB Storage, 4000mAH Battery)",
+        "price": 65999,
+        "rating": 4.1,
+        "categoryId": 1,
+        "Quantity": 1
+      },
+      "id": 2
+    }
+  ]
 }

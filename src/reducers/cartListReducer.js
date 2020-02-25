@@ -1,4 +1,4 @@
-export const ADD_TO_CART = "ADD_TO_CART";
+export const ADD_TO_CART = 'ADD_TO_CART';
 
 const INITIAL_STATE = {
   data: []
@@ -6,7 +6,6 @@ const INITIAL_STATE = {
 const actions = {};
 
 actions[ADD_TO_CART] = (nextState, action) => {
-  debugger
   let modifiedCardList = { ...nextState };
   modifiedCardList=action.data;
   nextState = modifiedCardList;

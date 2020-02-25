@@ -5,15 +5,15 @@ import Adapter from 'enzyme-adapter-react-16';
 import { configure } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
-import { Card, Table, CardBody, Button } from 'reactstrap';
+import { Card, Table, CardBody } from 'reactstrap';
 import { NotificationContainer } from 'react-notifications';
 
 configure({ adapter: new Adapter() });
 
 const mockStore = configureMockStore();
-let carList=[{id:1},{id:2}]
-const store = mockStore({carList});
-const wrapper = mount(<Provider store={store}><Basket onChange={() => { } } cartList={carList} /></Provider>);
+let cartList=[{id:1,product:{Quantity:1}},{id:2,product:{Quantity:2}}]
+const store = mockStore({cartList});
+const wrapper = mount(<Provider store={store}><Basket onChange={() => { } } cartList={cartList} /></Provider>);
 
 
 it('should find Card', () => {
@@ -31,7 +31,3 @@ it('should find Table', () => {
 it('should find NotificationContainer', () => {
   expect(wrapper.find(NotificationContainer)).toHaveLength(1);
 })
-
-// it('should find button', () => {
-//   expect(wrapper.find(Button)).toHaveLength(1);
-// })
