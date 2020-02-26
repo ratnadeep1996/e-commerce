@@ -13,6 +13,7 @@ class CategoryList extends Component {
 		this.getCategories();
 	}
 
+	//get category list
 	getCategories = () => {
 		fetch('http://localhost:8000/categories').then(res => res.json())
 			.then(data => this.setState({
@@ -20,6 +21,7 @@ class CategoryList extends Component {
 			}))
 	}
 
+	//show category list
 	renderCategoryList = () => {
 		return this.state.categoryList.map((item, index) => {
 			return (

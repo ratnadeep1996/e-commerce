@@ -182,15 +182,27 @@
   "cartList": [
     {
       "product": {
-        "pId": 8,
-        "title": "Upon a Burning Throne",
-        "description": "Upon a Burning Throne - The Burnt Empire Saga  (English, Paperback, Banker Ashok)",
-        "price": 303,
-        "rating": 4.4,
+        "pId": 20,
+        "title": "Srimad Bhagavad Gita",
+        "description": "Srimad Bhagavad Gita As It Is : HINDI-2016- New Edition (Hardcover, Hindi, A. C. Bhaktivedanta Swami Prabhupada,ISKCON)  (HARD BOUND, Hindi, His Divine Grace A. C. Bhaktivedanta Swami Prabhupada)",
+        "price": 170,
+        "rating": 4.7,
         "categoryId": 3,
-        "Quantity": 2
+        "Quantity": 1
       },
       "id": 1
+    },
+    {
+      "product": {
+        "pId": 3,
+        "title": "Apple iPhone 11 Pro Max",
+        "description": "Apple iPhone 11 Pro Max (256GB) - Space Grey",
+        "price": 123900,
+        "rating": 4.3,
+        "categoryId": 1,
+        "Quantity": 1
+      },
+      "id": 2
     },
     {
       "product": {
@@ -200,9 +212,33 @@
         "price": 65999,
         "rating": 4.1,
         "categoryId": 1,
+        "Quantity": 2
+      },
+      "id": 3
+    },
+    {
+      "product": {
+        "pId": 2,
+        "title": "Samsung Galaxy S10 ",
+        "description": "Samsung Galaxy S10 (White, 8GB RAM, 512GB Storage)",
+        "price": 59000,
+        "rating": 3.8,
+        "categoryId": 1,
         "Quantity": 1
       },
-      "id": 2
+      "id": 4
+    },
+    {
+      "product": {
+        "pId": 9,
+        "title": "The Power of Your Subconscious Mind",
+        "description": "The Power of Your Subconscious Mind - Unlock Your Master Key to Success  (English, Paperback, Dr. Murphy Joseph)",
+        "price": 99,
+        "rating": 4.6,
+        "categoryId": 3,
+        "Quantity": 1
+      },
+      "id": 5
     }
   ]
 }

@@ -3,6 +3,7 @@ import { Card, Table, CardBody, Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import { ADD_TO_CART } from '../reducers/cartListReducer';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
+import PropTypes from 'prop-types';
 
 class Basket extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class Basket extends Component {
     this.getCategories();
   }
 
+  //get category list 
   getCategories = () => {
     fetch('http://localhost:8000/categories').then(res => res.json())
       .then(data => this.setState({
@@ -26,21 +28,24 @@ class Basket extends Component {
       }))
   }
 
+  //get cart list added by user
   getCartList = () => {
     fetch('http://localhost:8000/cartList').then(res => res.json())
       .then(data => this.props.addToCart(data));
   }
 
+  //delete product from cart list
   deleteProduct = (item) => {
     const axios = require('axios');
     axios.delete(`http://localhost:8000/cartList/${item.id}`, {
     }).then(resp => {
-      NotificationManager.error('Product removed');
+      NotificationManager.error('Product removed','',1000);
       this.getCartList();
     }).catch(error => {
     });
   }
 
+  //get category name of product from category id
   getCategoryName = (categoryId) => {
     let categoryName = '';
     this.state.categoryList && this.state.categoryList.forEach(element => {
@@ -50,6 +55,8 @@ class Basket extends Component {
     });
     return categoryName;
   }
+
+  //buy product which are in cart
   buyNow = () => {
     this.props.cartList && this.props.cartList.length && this.props.cartList.forEach(element => {
       const axios = require('axios');
@@ -59,8 +66,10 @@ class Basket extends Component {
       }).catch(error => {
       });
     });
-    NotificationManager.success('Your order is Placed');
+    NotificationManager.success('COngratulation !! Your order is Placed',2000);
   }
+
+  //show empty cart whwn cart is empty
   renderEmptyCart() {
     return (
       <tr>
@@ -82,6 +91,8 @@ class Basket extends Component {
       </tr>
     )
   }
+
+  //show cart list
   renderCartList = () => {
     return this.props.cartList && this.props.cartList.length && this.props.cartList.map((item, index) => {
       return (
@@ -147,4 +158,9 @@ const mapDispatchToProps = function (dispatch) {
     addToCart: (data) => dispatch({ type: ADD_TO_CART, data })
   }
 }
+
+Basket.propTypes = {
+  cartList: PropTypes.object.isRequired
+};
+
 export default connect(mapStateToProps, mapDispatchToProps)(Basket);

@@ -27,6 +27,7 @@ class ProductList extends Component {
 		this.getProductList();
 	}
 
+	//get list of all products
 	getProductList = () => {
 		fetch('http://localhost:8000/products').then(res => res.json())
 			.then(data => this.setState({
@@ -56,6 +57,7 @@ class ProductList extends Component {
 		}
 	}
 
+	//options for sorting
 	renderOptionSortBy = () => {
 		const options = [{ id: 1, name: 'Price-Low to High' }, { id: 2, name: 'Price-High to Low' }]
 		return options.map((item, index) => {
@@ -63,6 +65,7 @@ class ProductList extends Component {
 		})
 	}
 
+	//filter for price range
 	renderPriceRange = () => {
 		const options = [{ id: 1, name: '0-1000' }, { id: 2, name: '1000-5000' }, { id: 3, name: '5000-20000' },
 		{ id: 4, name: 'Above 20000' }]
@@ -71,6 +74,7 @@ class ProductList extends Component {
 		})
 	}
 
+	//product detail of selected product
 	productDetail = (item) => {
 		this.setState({
 			selectedProduct: item,
@@ -78,12 +82,14 @@ class ProductList extends Component {
 		})
 	}
 
+	//close modal of product detail
 	closeModal = () => {
 		this.setState({
 			showModal: false
 		})
 	}
 
+	//search product from product list
 	search = () => {
 		const axios = require('axios');
 		axios.get(`http://localhost:8000/products?q=${this.state.searchText}`)
@@ -93,11 +99,14 @@ class ProductList extends Component {
 			});
 	}
 
+	//search will happen after pressing enter
 	handleChange = (e) => {
 		if (e.key === 'Enter') {
 			this.search();
 		}
 	}
+
+	//filter out products with given price range
 	priceRangeFilter = (productList) => {
 		let filterProductList = productList;
 		if (this.state.priceRange === 1) {
@@ -127,10 +136,13 @@ class ProductList extends Component {
 		return filterProductList;
 	}
 
+	//check if product list is empty
 	isListEmpty(productList) {
 		if (!productList.length)
 			return true;
 	}
+
+	//apply sort on product list
 	handleSort = (productList) => {
 		if (this.state.sortBy === 1) {
 			productList.sort(function (a, b) {
@@ -144,8 +156,9 @@ class ProductList extends Component {
 			productList.reverse();
 		}
 	}
+
+	//show product list
 	renderProductList = () => {
-		debugger
 		let productList = [];
 		this.state.productList && this.state.productList.forEach(element => {
 			if (element.categoryId === this.state.categoryId) {
